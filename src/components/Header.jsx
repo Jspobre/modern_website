@@ -6,6 +6,7 @@ import MenuSvg from "../assets/svg/MenuSvg";
 import { HamburgerMenu } from "./design/Header";
 import { useState } from "react";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
+import MyButton from "./MyButton";
 
 const Header = () => {
   const [openNavigation, setOpenNavigation] = useState(false);
@@ -76,6 +77,9 @@ const Header = () => {
         <Button className="hidden lg:flex" href="#login">
           Sign In
         </Button>
+        {/* <MyButton className="text-white px-9 bg-black py-5 rounded-3xl">
+          Sign in
+        </MyButton> */}
 
         <Button className="ml-auto lg:hidden px-3" onClick={toggleNavigation}>
           <MenuSvg openNavigation={openNavigation} />
