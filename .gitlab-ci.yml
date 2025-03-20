@@ -1,0 +1,24 @@
+stages:
+  - build
+  - deploy
+
+build-app:
+  stage: build
+  image: node:18-alpine
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+deploy-to-firebase:
+  stage: deploy
+  image: node:18-alpine
+  before_script:
+    - npm install -g firebase-tools
+  script:
+    - echo "$FIREBASE_SERVICE_ACCOUNT" > firebase-service-key.json
+    - firebase deploy --only hosting --token "$(cat firebase-key.json)"
+  only:
+    - main
